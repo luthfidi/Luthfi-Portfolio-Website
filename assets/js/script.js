@@ -101,9 +101,9 @@ if (localStorage.getItem("theme") === "light_theme") {
  // Set the select option based on the current URL
  window.onload = function() {
   var langSelect = document.getElementById('lang');
-  if (window.location.href.includes('./index-en.html')) {
+  if (window.location.href.includes('https://luthfidi.github.io/Luthfi-Portfolio-Website/index-en')) {
     langSelect.value = 'en';
-  } else if (window.location.href.includes('index-id.html')) {
+  } else if (window.location.href.includes('https://luthfidi.github.io/Luthfi-Portfolio-Website/index-id')) {
     langSelect.value = 'id';
   }
 };
