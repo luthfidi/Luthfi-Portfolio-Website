@@ -101,7 +101,7 @@ if (localStorage.getItem("theme") === "light_theme") {
  // Set the select option based on the current URL
  window.onload = function() {
   var langSelect = document.getElementById('lang');
-  if (window.location.href.includes('index-en.html')) {
+  if (window.location.href.includes('./index-en.html')) {
     langSelect.value = 'en';
   } else if (window.location.href.includes('index-id.html')) {
     langSelect.value = 'id';
@@ -112,8 +112,8 @@ if (localStorage.getItem("theme") === "light_theme") {
 document.getElementById('lang').addEventListener('change', function() {
   var selectedLanguage = this.value;
   if (selectedLanguage === 'en') {
-    window.location.href = '/index-en.html';
+    window.location.href = 'https://luthfidi.github.io/Luthfi-Portfolio-Website/index-en';
   } else if (selectedLanguage === 'id') {
-    window.location.href = '/index-id.html';
+    window.location.href = 'https://luthfidi.github.io/Luthfi-Portfolio-Website/index-id';
   }
 });
