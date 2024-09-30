@@ -40,6 +40,16 @@ navToggleBtn.addEventListener("click", function () {
 
 });
 
+const navLink = document.querySelectorAll(".navbar-link");
+const navbarParent = document.getElementById('navbar');
+
+for (let i = 0; i < navLink.length; i++) {
+  navLink[i].addEventListener("click", function () {
+    navbarParent.classList.toggle("active");
+    navToggleBtn.classList.toggle("active");
+  });
+}
+
 /**
  * skills toggle
  */
