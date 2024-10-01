@@ -111,9 +111,9 @@ if (localStorage.getItem("theme") === "light_theme") {
  // Set the select option based on the current URL
  window.onload = function() {
   var langSelect = document.getElementById('lang');
-  if (window.location.href.includes('https://luthfi-portfolio-website.vercel.app/')) {
+  if (window.location.href.includes('https://luthfidi.github.io/Luthfi-Portfolio-Website/index-en')) {
     langSelect.value = 'en';
-  } else if (window.location.href.includes('https://luthfi-portfolio-website.vercel.app/id')) {
+  } else if (window.location.href.includes('https://luthfidi.github.io/Luthfi-Portfolio-Website/index-id')) {
     langSelect.value = 'id';
   }
 };
@@ -122,9 +122,9 @@ if (localStorage.getItem("theme") === "light_theme") {
 document.getElementById('lang').addEventListener('change', function() {
   var selectedLanguage = this.value;
   if (selectedLanguage === 'en') {
-    window.location.href = 'https://luthfi-portfolio-website.vercel.app/';
+    window.location.href = 'https://luthfidi.github.io/Luthfi-Portfolio-Website/index-en';
   } else if (selectedLanguage === 'id') {
-    window.location.href = 'https://luthfi-portfolio-website.vercel.app/id';
+    window.location.href = 'https://luthfidi.github.io/Luthfi-Portfolio-Website/index-id';
   }
 });
 
@@ -184,12 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
     submitButton.textContent = 'Sending...';
 
     try {
-      const response = await fetch('http://localhost:3000/api/send-message', {
+      const response = await fetch('/api/send-message', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(Object.fromEntries(formData)),
+        body: formData
       });
 
       if (response.ok) {
@@ -200,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (error) {
       console.error('Error:', error);
-      showNotification('Failed to send message. Please try again.', 'error');
+      showNotification('This feature is being improved. Feel free to reach out via my socials.', 'error');
     } finally {
       submitButton.disabled = false;
       submitButton.textContent = 'Send';
@@ -237,13 +234,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-});
-
-// Dalam event listener submit form
-const response = await fetch('/api/send-message', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(Object.fromEntries(formData)),
 });
