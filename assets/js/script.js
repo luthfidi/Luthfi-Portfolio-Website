@@ -127,3 +127,123 @@ document.getElementById('lang').addEventListener('change', function() {
     window.location.href = 'https://luthfidi.github.io/Luthfi-Portfolio-Website/index-id';
   }
 });
+
+
+// Contact Form Script
+
+document.addEventListener('DOMContentLoaded', () => {
+  const contactForm = document.querySelector('.contact-form');
+  const formInputs = contactForm.querySelectorAll('input, textarea');
+  
+  // Form validation
+  const validateForm = () => {
+    let isValid = true;
+    formInputs.forEach(input => {
+      if (input.value.trim() === '') {
+        isValid = false;
+        showError(input, 'This field is required');
+      } else {
+        clearError(input);
+      }
+    });
+    return isValid;
+  };
+
+  const showError = (input, message) => {
+    const formWrapper = input.closest('.form-wrapper');
+    let errorElement = formWrapper.querySelector('.error-message');
+    if (!errorElement) {
+      errorElement = document.createElement('span');
+      errorElement.classList.add('error-message');
+      formWrapper.appendChild(errorElement);
+    }
+    errorElement.textContent = message;
+    input.classList.add('error');
+  };
+
+  const clearError = (input) => {
+    const formWrapper = input.closest('.form-wrapper');
+    const errorElement = formWrapper.querySelector('.error-message');
+    if (errorElement) {
+      errorElement.remove();
+    }
+    input.classList.remove('error');
+  };
+
+  // Form submission
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    const formData = new FormData(contactForm);
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+
+    try {
+      const response = await fetch('http://localhost:3000/api/send-message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(Object.fromEntries(formData)),
+      });
+
+      if (response.ok) {
+        showNotification('Message sent successfully!', 'success');
+        contactForm.reset();
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      showNotification('Failed to send message. Please try again.', 'error');
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Send';
+    }
+  });
+
+  // Notification system
+  const showNotification = (message, type) => {
+    const notification = document.createElement('div');
+    notification.classList.add('notification', type);
+    notification.textContent = message;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+      notification.classList.add('show');
+    }, 10);
+
+    setTimeout(() => {
+      notification.classList.remove('show');
+      setTimeout(() => {
+        notification.remove();
+      }, 300);
+    }, 3000);
+  };
+
+  // Real-time validation
+  formInputs.forEach(input => {
+    input.addEventListener('blur', () => {
+      if (input.value.trim() === '') {
+        showError(input, 'This field is required');
+      } else {
+        clearError(input);
+      }
+    });
+  });
+});
+
+// Dalam event listener submit form
+const response = await fetch('/api/send-message', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(Object.fromEntries(formData)),
+});

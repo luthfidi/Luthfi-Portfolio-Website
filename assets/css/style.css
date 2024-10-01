@@ -903,6 +903,58 @@ textarea.input-field {
 }
 
 /*-----------------------------------*\
+ * #NOTIFICATION
+\*-----------------------------------*/
+
+.notification {
+  position: fixed;
+  bottom: 520px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 20px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+  text-align: center;
+  max-width: 90%;
+  width: 300px;
+}
+
+.notification.show {
+  opacity: 1;
+}
+
+.notification.success {
+  background-color: #4caf50;
+}
+
+.notification.error {
+  background-color: var(--raw-seinna);
+}
+
+.error-message {
+  color: var(--raw-seinna);
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+.input-field.error {
+  border: 1px solid var(--raw-seinna);
+}
+
+@media (min-width: 768px) {
+  .notification {
+    bottom: 750px;
+    right: 30px;
+    left: auto;
+    transform: none;
+  }
+}
+/*-----------------------------------*\
  * #FOOTER
 \*-----------------------------------*/
 
