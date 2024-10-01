@@ -948,7 +948,7 @@ textarea.input-field {
 
 @media (min-width: 768px) {
   .notification {
-    bottom: 750px;
+    bottom: 600px;
     right: 30px;
     left: auto;
     transform: none;
