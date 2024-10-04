@@ -286,3 +286,25 @@ document.addEventListener('mousemove', onMouseMove, false);
 
 initCursor();
 updateCursor();
+
+document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('img');
+  
+  images.forEach(img => {
+      img.addEventListener('dragstart', function(e) {
+          e.preventDefault();
+      });
+      
+      img.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+      });
+      
+      img.addEventListener('touchstart', function(e) {
+          e.preventDefault();
+      }, { passive: false });
+      
+      img.addEventListener('touchmove', function(e) {
+          e.preventDefault();
+      }, { passive: false });
+  });
+});
