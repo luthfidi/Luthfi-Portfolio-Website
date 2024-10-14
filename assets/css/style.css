@@ -76,12 +76,12 @@ body.dark_theme {
 }
 
 body.light_theme {
-  --bg-primary: hsl(0, 0%, 90%);
-  --bg-secondary: hsl(0, 0%, 100%);
-  --color-primary: hsl(0, 0%, 12%);
-  --color-secondary: hsl(0, 0%, 37%);
-  --card-shadow: hsla(0, 0%, 0%, 0.1);
-  --input-bg: hsl(0, 0%, 93%);
+  --bg-primary: hsl(0, 0%, 75%);
+  --bg-secondary: hsl(0, 0%, 85%);
+  --color-primary: hsl(0, 0%, 5%);
+  --color-secondary: hsl(0, 0%, 25%);
+  --card-shadow: hsla(0, 0%, 0%, 0.2);
+  --input-bg: hsl(0, 0%, 80%);
 
   --shadow-1: 10px 10px 40px var(--card-shadow);
 }
@@ -160,6 +160,7 @@ html {
 body {
   background: var(--bg-primary);
   transition: var(--transition-1);
+  transition: background-color 0.6s ease, color 0.6s ease;
   cursor: none;
 }
 
@@ -1457,7 +1458,7 @@ textarea.input-field {
   background: var(--raw-seinna);
 }
 
-/* Custom Scrollbar - Updated */
+/* Custom Scrollbar*/
 :root {
   --scrollbar-thumb: hsl(24, 74%, 58%);
   --scrollbar-thumb-hover: hsl(24, 74%, 48%);
