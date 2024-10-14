@@ -1444,6 +1444,7 @@ textarea.input-field {
   left: calc(30px * -0.5);
   pointer-events: none;
   mix-blend-mode: difference;
+  z-index: 9999;
 }
 
 .cursor-circle {
@@ -1454,4 +1455,34 @@ textarea.input-field {
   height: 30px;
   border-radius: 30px;
   background: var(--raw-seinna);
+}
+
+/* Custom Scrollbar - Updated */
+:root {
+  --scrollbar-thumb: hsl(24, 74%, 58%);
+  --scrollbar-thumb-hover: hsl(24, 74%, 48%);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary, hsl(0, 0%, 19%));
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 6px;
+  border: 3px solid var(--bg-primary, hsl(0, 0%, 19%));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--bg-primary, hsl(0, 0%, 19%));
 }
