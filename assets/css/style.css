@@ -1446,7 +1446,7 @@ textarea.input-field {
   left: calc(30px * -0.5);
   pointer-events: none;
   mix-blend-mode: difference;
-  z-index: 9999;
+  z-index: 10;
 }
 
 .cursor-circle {
