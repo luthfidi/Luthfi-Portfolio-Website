@@ -1,8 +1,4 @@
 /*-----------------------------------*\
- * style.css
-\*-----------------------------------*/
-
-/*-----------------------------------*\
  * #CUSTOM PROPERTY
 \*-----------------------------------*/
 
@@ -1436,8 +1432,6 @@ textarea.input-field {
 
 #cursor {
   position: fixed;
-  /* ---------------DECIDES POSITION FO CURSOR------------ */
-  /* LIKE FROM TOP ADN LEFT IT WILL BE 0.5 IN DISTANCE */
   top: calc(30px * -0.5);
   left: calc(30px * -0.5);
   pointer-events: none;
