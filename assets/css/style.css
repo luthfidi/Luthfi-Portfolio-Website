@@ -1463,3 +1463,21 @@ textarea.input-field {
   background-color: var(--raw-seinna);
   border-radius: 10px;
 }
+
+body {
+  user-select: none; /* Nonaktifkan seleksi teks */
+  -webkit-user-select: none; /* Safari iOS */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  user-select: text; /* Izinkan teks hanya untuk elemen tertentu */
+  -webkit-user-select: text; /* Safari iOS */
+  -ms-user-select: text; /* Internet Explorer/Edge */
+}
