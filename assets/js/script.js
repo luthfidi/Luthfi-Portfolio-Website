@@ -128,7 +128,6 @@ document.getElementById('lang').addEventListener('change', function() {
   }
 });
 
-
 // Contact Form Script
 
 document.addEventListener('DOMContentLoaded', () => {
