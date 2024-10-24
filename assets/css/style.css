@@ -156,6 +156,8 @@ body {
   cursor: none;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 body.active {
@@ -1432,13 +1434,14 @@ textarea.input-field {
  * cursor
  */
 
-#cursor {
+ #cursor {
   position: fixed;
   top: calc(30px * -0.5);
   left: calc(30px * -0.5);
   pointer-events: none;
   mix-blend-mode: difference;
   z-index: 10;
+  will-change: transform;
 }
 
 .cursor-circle {
@@ -1449,35 +1452,31 @@ textarea.input-field {
   height: 30px;
   border-radius: 30px;
   background: var(--raw-seinna);
+  will change: transform;
 }
 
 ::-webkit-scrollbar {
+  width:  5px;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scrollbar {
+  position: fixed;
+  right: 0;
+  top: 0;
   width: 5px;
+  height: 100%;
+  z-index: 9;
 }
 
-::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-::-webkit-scrollbar-thumb {
+.custom-scrollbar-thumb {
+  width: 100%;
   background-color: var(--raw-seinna);
   border-radius: 10px;
-}
-
-body {
-  user-select: none; /* Nonaktifkan seleksi teks */
-  -webkit-user-select: none; /* Safari iOS */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  user-select: text; /* Izinkan teks hanya untuk elemen tertentu */
-  -webkit-user-select: text; /* Safari iOS */
-  -ms-user-select: text; /* Internet Explorer/Edge */
+  position: absolute;
+  top: 0;
+  right: 0;
 }

@@ -237,7 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // cursor
-
 console.clear();
 
 const curlen = 20;
@@ -286,3 +285,30 @@ document.addEventListener('mousemove', onMouseMove, false);
 
 initCursor();
 updateCursor();
+
+//scrollbar
+function initCustomScrollbar() {
+  const scrollbar = document.createElement('div');
+  scrollbar.className = 'custom-scrollbar';
+  
+  const thumb = document.createElement('div');
+  thumb.className = 'custom-scrollbar-thumb';
+  
+  scrollbar.appendChild(thumb);
+  document.body.appendChild(scrollbar);
+  
+  // Update thumb height and position
+  function updateScrollbar() {
+    const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    const thumbHeight = (window.innerHeight / document.documentElement.scrollHeight) * window.innerHeight;
+    
+    thumb.style.height = `${thumbHeight}px`;
+    thumb.style.top = `${scrollPercent * (window.innerHeight - thumbHeight)}px`;
+  }
+  
+  window.addEventListener('scroll', updateScrollbar);
+  window.addEventListener('resize', updateScrollbar);
+  updateScrollbar();
+}
+
+initCustomScrollbar();
