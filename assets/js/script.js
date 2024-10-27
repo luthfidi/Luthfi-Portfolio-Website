@@ -108,8 +108,6 @@ if (localStorage.getItem("theme") === "light_theme") {
   document.body.classList.add("dark_theme");
 }
 
-// 
-
  // Set the select option based on the current URL
  window.onload = function() {
   var langSelect = document.getElementById('lang');
