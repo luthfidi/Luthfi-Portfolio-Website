@@ -930,52 +930,102 @@ textarea.input-field {
 
 .notification {
   position: fixed;
-  bottom: 520px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 15px 20px;
-  border-radius: 4px;
+  bottom: 30px;
+  right: 30px;
+  padding: 16px 20px;
+  border-radius: 8px;
   color: white;
-  font-weight: bold;
+  font-weight: 500;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(100%);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   z-index: 1000;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   max-width: 90%;
-  width: 300px;
+  width: 400px;
 }
 
 .notification.show {
   opacity: 1;
+  transform: translateX(0);
+}
+
+.notification-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.notification-message {
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .notification.success {
-  background-color: #4caf50;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  border-left: 4px solid #388E3C;
 }
 
 .notification.error {
-  background-color: var(--raw-seinna);
+  background: linear-gradient(135deg, #f44336, #e53935);
+  border-left: 4px solid #d32f2f;
 }
 
 .error-message {
-  color: var(--raw-seinna);
+  color: #f44336;
   font-size: 12px;
   margin-top: 5px;
   display: block;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.error-message::before {
+  content: "!";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background-color: #f44336;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .input-field.error {
-  border: 1px solid var(--raw-seinna);
+  border-color: #f44336;
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
-@media (min-width: 768px) {
-  .notification {
-    bottom: 600px;
-    right: 30px;
-    left: auto;
-    transform: none;
+@keyframes shake {
+  10%, 90% {
+    transform: translateX(-1px);
+  }
+  20%, 80% {
+    transform: translateX(2px);
+  }
+  30%, 50%, 70% {
+    transform: translateX(-2px);
+  }
+  40%, 60% {
+    transform: translateX(2px);
   }
 }
+
+@media (max-width: 768px) {
+  .notification {
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    width: auto;
+  }
+}
+
 /*-----------------------------------*\
  * #FOOTER
 \*-----------------------------------*/
