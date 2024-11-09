@@ -77,6 +77,34 @@ themeToggleBtn.addEventListener("click", function () {
 });
 
 /**
+ * skills & tools toggle
+ */
+const toggleBtns = document.querySelectorAll("[data-toggle-btn]");
+const toggleBox = document.querySelector("[data-toggle-box]");
+const skillsBox = document.querySelector(".skills-box");
+
+toggleBtns.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    // Remove active class from all buttons
+    toggleBtns.forEach((otherBtn) => {
+      otherBtn.classList.remove("active");
+    });
+    
+    // Add active class to clicked button
+    btn.classList.add("active");
+    
+    // Toggle skills box based on which button was clicked
+    if (btn.textContent.toLowerCase().includes("tools")) {
+      skillsBox.classList.add("active");
+      toggleBox.classList.add("active");
+    } else {
+      skillsBox.classList.remove("active"); 
+      toggleBox.classList.remove("active");
+    }
+  });
+});
+
+/**
  * check & apply last time selected theme from localStorage
  */
 
