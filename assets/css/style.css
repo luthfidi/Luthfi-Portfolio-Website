@@ -516,6 +516,9 @@ main {
 
 .hero-content {
   max-width: 450px;
+  position: absolute;
+  top: 50%;
+  filter: drop-shadow(10px 10px 40px var(--black));
 }
 
 .hero-title {
@@ -1291,14 +1294,6 @@ textarea.input-field {
     height: 100%;
     width: auto;
     margin-inline: auto;
-  }
-
-  .hero-content {
-    --color-primary: var(--white);
-
-    position: absolute;
-    top: 50%;
-    filter: drop-shadow(2px 4px 10px var(--black));
   }
 
   .hero .btn-primary:is(:hover, :focus) {
