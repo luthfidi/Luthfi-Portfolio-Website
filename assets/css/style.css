@@ -757,7 +757,7 @@ main {
   margin-bottom: 10px;
 }
 
-.project-card :is(.card-title, .publish-date) {
+.project-card :is(.card-title, .tech-stack) {
   background: var(--bg-primary);
   padding: 6px 12px;
   width: max-content;
@@ -767,18 +767,18 @@ main {
   transition: var(--transition-1);
 }
 
-.project-card .publish-date {
+.project-card .tech-stack {
   font-size: var(--fs-6);
   color: var(--color-primary);
   transition-delay: 0s;
 }
 
-.project-card:is(:hover, :focus) :is(.card-title, .publish-date) {
+.project-card:is(:hover, :focus) :is(.card-title, .tech-stack) {
   transform: translateY(0);
   opacity: 1;
 }
 
-.project-card:is(:hover, :focus) .publish-date {
+.project-card:is(:hover, :focus) .tech-stack {
   transition-delay: 0.1s;
 }
 
@@ -1020,15 +1020,6 @@ textarea.input-field {
   }
 }
 
-@media (max-width: 768px) {
-  .notification {
-    bottom: 20px;
-    right: 20px;
-    left: 20px;
-    width: auto;
-  }
-}
-
 /*-----------------------------------*\
  * #FOOTER
 \*-----------------------------------*/
@@ -1164,12 +1155,76 @@ textarea.input-field {
   }
 
   /**
+   * PROJECT
+   */
+  .project-card :is(.card-title, .tech-stack) {
+    background: var(--bg-primary);
+    padding: 6px 12px;
+    width: max-content;
+    box-shadow: var(--shadow-1);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: var(--transition-1);
+  }
+
+  .project-card .tech-stack {
+    font-size: var(--fs-6);
+    color: var(--color-primary);
+    transition-delay: 0s;
+  }
+
+  .project-card:is(:hover, :focus) :is(.card-title, .tech-stack) {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .project-card:is(:hover, :focus) .tech-stack {
+    transition-delay: 0.1s;
+  }
+
+  /**
    * CONTACT
    */
 
   .contact-form {
     max-width: 450px;
     margin-inline: auto;
+  }
+}
+
+/**
+ * responsive for smaller than 768px screen
+ */
+
+@media (max-width: 768px) {
+  .notification {
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    width: auto;
+  }
+
+  .project-card .card-content {
+    position: relative;
+    background: var(--bg-secondary);
+    padding: 15px;
+  }
+
+  .project-card :is(.card-title, .tech-stack) {
+    width: max-content;
+    opacity: 1;
+    transform: none;
+  }
+
+  .project-card .card-title {
+    color: var(--color-primary);
+    font-size: var(--fs-5);
+    margin-bottom: 5px;
+  }
+
+  .project-card .tech-stack {
+    font-size: var(--fs-6);
+    color: var(--color-secondary);
   }
 }
 
