@@ -524,6 +524,8 @@ main {
 .hero-title {
   text-align: center;
   margin-bottom: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .hero .btn-primary {
