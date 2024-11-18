@@ -40,15 +40,12 @@ navToggleBtn.addEventListener("click", function () {
 const navLinks = document.querySelectorAll(".navbar-link");
 const navbarParent = document.getElementById("navbar");
 
-// Perbaikan pada event listener navigasi
+// Fix on the navigation event listener
 navLinks.forEach((link) => {
   link.addEventListener("click", function (e) {
-    // Tambahkan delay kecil untuk memastikan animasi scroll selesai
     setTimeout(() => {
-      // Hapus class active dari navbar
       navbarParent.classList.remove("active");
       navToggleBtn.classList.remove("active");
-      // Yang paling penting: hapus class yang memblokir scrolling dari body
       document.body.classList.remove("active");
     }, 100);
   });
