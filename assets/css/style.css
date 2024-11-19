@@ -789,7 +789,7 @@ main {
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  font-size: var(--fs-4);
+  font-size: var(--fs-5);
   color: var(--color-secondary);
   background-color: transparent;
   border: 2px solid var(--color-secondary);
@@ -1020,12 +1020,12 @@ textarea.input-field {
 }
 
 .notification.error {
-  background: linear-gradient(135deg, #f44336, #e53935);
+  background: linear-gradient(135deg, var(--raw-seinna), #e53935);
   border-left: 4px solid #d32f2f;
 }
 
 .error-message {
-  color: #f44336;
+  color: var(--raw-seinna);
   font-size: 12px;
   margin-top: 5px;
   display: block;
@@ -1041,7 +1041,7 @@ textarea.input-field {
   justify-content: center;
   width: 16px;
   height: 16px;
-  background-color: #f44336;
+  background-color: var(--raw-seinna);
   color: white;
   border-radius: 50%;
   font-size: 12px;
@@ -1049,7 +1049,7 @@ textarea.input-field {
 }
 
 .input-field.error {
-  border-color: #f44336;
+  border-color: var(--raw-seinna);
   animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
