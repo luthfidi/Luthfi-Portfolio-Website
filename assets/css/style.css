@@ -70,12 +70,12 @@ body.dark_theme {
 }
 
 body.light_theme {
-  --bg-primary: hsl(215, 50%, 70%);
-  --bg-secondary: hsl(215, 40%, 60%);
-  --color-primary: hsl(215, 30%, 10%);
-  --color-secondary: hsl(215, 25%, 20%);
-  --unique-color: hsl(214, 70%, 35%);
-  
+  --bg-primary: hsl(215, 50%, 58%);
+  --bg-secondary: hsl(215, 40%, 40%);
+  --color-primary: hsl(215, 30%, 5%);
+  --color-secondary: hsl(215, 25%, 15%);
+  --unique-color: hsl(214, 70%, 22%); /* Ocean Depth */
+
   --input-bg: hsl(0, 0%, 80%);
   --shadow-1: 10px 10px 40px var(--card-shadow);
 }
@@ -669,7 +669,7 @@ main {
 }
 
 .toggle-btn.active {
-  color: var(--white);
+  color: var(--bg-primary);
 }
 
 .skills-box.active .skills-list,
@@ -799,7 +799,7 @@ main {
 }
 
 .load-more:hover {
-  color: #007bff; 
+  color: var(--color-secondary); 
   cursor: pointer; 
   transform: scale(1.05);
 }
@@ -813,7 +813,7 @@ main {
 }
 
 .load-more:hover {
-  color: #fff;
+  color: var(--bg-primary);
   background-color: var(--color-secondary);
   cursor: pointer;
   transform: translateY(-2px);
@@ -833,8 +833,6 @@ main {
   justify-content: center;
   margin: 2rem 0;
 }
-
-
 
 /*-----------------------------------*\
  * #CONTACT
