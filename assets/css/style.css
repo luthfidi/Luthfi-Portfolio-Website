@@ -8,6 +8,7 @@
    */
 
   --raw-seinna: hsl(24, 74%, 58%);
+  --cerulean-bliss: hsl(214, 70%, 35%);
   --sizzling-sunrise: hsl(51, 95%, 54%);
   --scarlet: hsl(13, 96%, 47%);
   --black: hsl(0, 0%, 0%);
@@ -62,17 +63,19 @@ body.dark_theme {
   --color-primary: hsl(0, 0%, 100%);
   --color-secondary: hsl(0, 0%, 62%);
   --card-shadow: hsla(0, 0%, 0%, 0.4);
+  --unique-color: hsl(24, 74%, 58%);
+  
   --input-bg: hsl(0, 0%, 16%);
-
   --shadow-1: 10px 10px 40px var(--card-shadow);
 }
 
 body.light_theme {
-  --bg-primary: hsl(220, 35%, 75%);
---bg-secondary: hsl(220, 25%, 65%);
---color-primary: hsl(220, 20%, 20%);
---color-secondary: hsl(220, 15%, 30%);
-
+  --bg-primary: hsl(215, 50%, 70%);
+  --bg-secondary: hsl(215, 40%, 60%);
+  --color-primary: hsl(215, 30%, 10%);
+  --color-secondary: hsl(215, 25%, 20%);
+  --unique-color: hsl(214, 70%, 35%);
+  
   --input-bg: hsl(0, 0%, 80%);
   --shadow-1: 10px 10px 40px var(--card-shadow);
 }
@@ -223,13 +226,9 @@ body.active {
 }
 
 .btn-secondary {
-  background: var(--raw-seinna);
-  border-color: var(--raw-seinna);
-  color: var(--black);
-}
-
-.btn-secondary:is(:hover, :focus) {
-  --raw-seinna: hsl(24, 74%, 64%);
+  background: var(--unique-color);
+  border-color: var(--unique-color);
+  color: var(--bg-primary);
 }
 
 .section-subtitle {
@@ -264,7 +263,7 @@ body.active {
 .tooltip {
   position: absolute;
   top: -40px;
-  background: var(--raw-seinna);
+  background: var(--unique-color);
   min-width: max-content;
   color: var(--white);
   font-size: 15px;
@@ -319,7 +318,7 @@ body.active {
 
 .logo span {
   display: inline-block;
-  color: var(--raw-seinna);
+  color: var(--unique-color);
   margin-left: 2px;
 }
 
@@ -467,7 +466,7 @@ body.active {
   left: 0;
   height: 5px;
   width: 0;
-  background: var(--raw-seinna);
+  background: var(--unique-color);
   transition: var(--transition-1);
 }
 
@@ -560,7 +559,7 @@ main {
 }
 
 .stats-card .card-icon {
-  background: var(--raw-seinna);
+  background: var(--unique-color);
   width: 60px;
   height: 60px;
   display: grid;
@@ -575,7 +574,7 @@ main {
 
 .stats-card .card-title {
   width: calc(100% - 95px);
-  color: var(--raw-seinna);
+  color: var(--unique-color);
   text-align: center;
 }
 
@@ -651,7 +650,7 @@ main {
   left: 5px;
   bottom: 5px;
   width: 93px;
-  background: var(--raw-seinna);
+  background: var(--unique-color);
   border-radius: 100px;
   transition: var(--transition-1);
   z-index: -1;
@@ -902,7 +901,7 @@ main {
 }
 
 .contact-social-link:is(:hover, :focus) {
-  background: var(--raw-seinna);
+  background: var(--unique-color);
   color: var(--white);
 }
 
@@ -936,7 +935,7 @@ main {
 
 .input-field {
   background: var(--input-bg);
-  color: var(--raw-seinna);
+  color: var(--unique-color);
   padding: 10px;
   padding-left: 40px;
   border-radius: var(--radius-12);
@@ -964,7 +963,7 @@ textarea.input-field {
 }
 
 .input-field:focus + ion-icon {
-  color: var(--raw-seinna);
+  color: var(--unique-color);
 }
 
 .contact .btn-primary {
@@ -1019,12 +1018,12 @@ textarea.input-field {
 }
 
 .notification.error {
-  background: linear-gradient(135deg, var(--raw-seinna), #e53935);
+  background: linear-gradient(135deg, var(--unique-color), #e53935);
   border-left: 4px solid #d32f2f;
 }
 
 .error-message {
-  color: var(--raw-seinna);
+  color: var(--unique-color);
   font-size: 12px;
   margin-top: 5px;
   display: block;
@@ -1040,7 +1039,7 @@ textarea.input-field {
   justify-content: center;
   width: 16px;
   height: 16px;
-  background-color: var(--raw-seinna);
+  background-color: var(--unique-color);
   color: white;
   border-radius: 50%;
   font-size: 12px;
@@ -1048,7 +1047,7 @@ textarea.input-field {
 }
 
 .input-field.error {
-  border-color: var(--raw-seinna);
+  border-color: var(--unique-color);
   animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
@@ -1089,7 +1088,7 @@ textarea.input-field {
 
 .copyright a {
   display: inline-block;
-  color: var(--raw-seinna);
+  color: var(--unique-color);
 }
 
 /*-----------------------------------*\
@@ -1623,7 +1622,7 @@ textarea.input-field {
   width: 30px;
   height: 30px;
   border-radius: 30px;
-  background: var(--raw-seinna);
+  background: var(--unique-color);
   will change: transform;
 }
 
@@ -1646,7 +1645,7 @@ body::-webkit-scrollbar {
 
 .custom-scrollbar-thumb {
   width: 100%;
-  background-color: var(--raw-seinna);
+  background-color: var(--unique-color);
   border-radius: 10px;
   position: absolute;
   top: 0;
