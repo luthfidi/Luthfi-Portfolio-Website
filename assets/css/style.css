@@ -70,13 +70,13 @@ body.dark_theme {
 }
 
 body.light_theme {
-  --bg-primary: hsl(215, 50%, 58%);
-  --bg-secondary: hsl(215, 40%, 40%);
-  --color-primary: hsl(215, 30%, 5%);
-  --color-secondary: hsl(215, 25%, 15%);
-  --unique-color: hsl(214, 70%, 22%); /* Ocean Depth */
-
-  --input-bg: hsl(0, 0%, 80%);
+  --bg-primary: hsl(220, 50%, 92%);
+  --bg-secondary: hsl(220, 40%, 82%);
+  --color-primary: hsl(0, 0%, 12%);
+  --color-secondary: hsl(0, 0%, 32%);
+  --unique-color: hsl(210, 70%, 45%); /* Azure Bliss */
+  
+  --input-bg: hsl(220, 45%, 75%);
   --shadow-1: 10px 10px 40px var(--card-shadow);
 }
 
