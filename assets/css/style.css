@@ -18,6 +18,42 @@
    * typography
    */
 
+/* Font Face Setup */
+@font-face {
+  font-family: "Saira Stencil One";
+  src: url("../fonts/SairaStencilOne-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
   --ff-saira-stencil-one: "Saira Stencil One", sans-serif;
   --ff-poppins: "Poppins", sans-serif;
   --ff-roboto: "Roboto", sans-serif;
