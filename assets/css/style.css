@@ -75,7 +75,7 @@ body.light_theme {
   --color-primary: hsl(0, 0%, 12%);
   --color-secondary: hsl(0, 0%, 32%);
   --card-shadow: hsla(0, 0%, 0%, 0.1);
-  --unique-color: hsl(210, 70%, 45%); /* Azure Bliss */
+  --unique-color: hsl(210, 70%, 45%);
   
   --input-bg: hsl(220, 45%, 75%);
   --shadow-1: 10px 10px 40px var(--card-shadow);
