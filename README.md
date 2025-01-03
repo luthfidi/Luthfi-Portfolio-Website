@@ -1,4 +1,4 @@
-# Luthfi-Portfolio-Website
+# Luthfi's Portfolio Website
 ---
 ### A portfolio website showcasing my projects and skills in software engineering as a front-end developer.
 ---
