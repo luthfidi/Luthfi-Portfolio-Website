@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Luthfi Hadi Portfolio Website | Computer Science student at BINUS University | Front-End developer at PT.Zegen Solusi Mandiri" />
+    <meta
+      name="description"
+      content="Luthfi Hadi Portfolio Website | Computer Science student at BINUS University | Front-End developer at PT.Zegen Solusi Mandiri"
+    />
     <title>Luthfi Hadi - luthfidi</title>
 
-    <!-- 
-    - favicon
-  -->
-
+    <!-- Favicon with optimal loading -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -37,27 +37,163 @@
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
 
-    <!-- 
-    - custom css link
-  -->
-
-    <link rel="stylesheet" href="./assets/css/style.css" />
-
-    <!-- 
-    - google font link
-  -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- Preconnect to required domains to speed up load times -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+
+    <!-- Font loading optimization - add display=swap for better painting during load -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
 
-    <!-- 
-    - EmailJS  
-    -->
+    <!-- Fallback for font loading -->
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- Critical CSS inlined for faster rendering -->
+    <style>
+      /* Critical CSS for above-the-fold content */
+      :root {
+        --raw-seinna: hsl(24, 74%, 58%);
+        --cerulean-bliss: hsl(214, 70%, 35%);
+        --black: hsl(0, 0%, 0%);
+        --white: hsl(0, 0%, 100%);
+        --ff-saira-stencil-one: "Saira Stencil One", sans-serif;
+        --ff-poppins: "Poppins", sans-serif;
+        --ff-roboto: "Roboto", sans-serif;
+        --transition-1: 0.25s ease-in-out;
+      }
+
+      body.dark_theme {
+        --bg-primary: hsl(0, 0%, 12%);
+        --bg-secondary: hsl(0, 0%, 19%);
+        --color-primary: hsl(0, 0%, 100%);
+        --color-secondary: hsl(0, 0%, 62%);
+        --card-shadow: hsla(0, 0%, 0%, 0.4);
+        --unique-color: hsl(24, 74%, 58%);
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--bg-primary);
+        font-family: var(--ff-roboto);
+        transition: background-color 0.6s ease, color 0.6s ease;
+        overflow-y: scroll;
+      }
+
+      .header {
+        padding-block: 15px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 4;
+      }
+
+      .container {
+        padding-inline: 20px;
+        max-width: 1150px;
+        margin-inline: auto;
+      }
+
+      .header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo a {
+        color: var(--color-primary);
+        font-family: var(--ff-saira-stencil-one);
+        text-decoration: none;
+      }
+
+      .logo span {
+        display: inline-block;
+        color: var(--unique-color);
+        margin-left: 2px;
+      }
+
+      /* Hero section critical styles */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 115px;
+      }
+
+      .hero-banner {
+        max-width: 500px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .hero-banner img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+      }
+
+      /* Fix for responsive GIF at various zoom levels */
+      @media screen and (min-width: 768px) {
+        .hero-banner {
+          position: relative;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+
+        .hero-banner img {
+          margin: 0 auto;
+          max-width: 80%;
+        }
+      }
+
+      @media (min-width: 320px) and (max-width: 767px) {
+        .hero-banner img {
+          max-width: 100%;
+        }
+      }
+    </style>
+
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link
+      rel="stylesheet"
+      href="./assets/css/style.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="./assets/css/style.css" />
+    </noscript>
+
+    <!-- EmailJS script loaded with defer attribute to not block parsing -->
     <script
+      defer
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
     ></script>
@@ -75,14 +211,17 @@
         </h1>
 
         <div class="navbar-actions">
-          <select name="language" id="lang">
-            <option value="en">En</option>
-            <option value="id">Id</option>
-          </select>
+          <div class="select-container">
+            <label for="lang" class="visually-hidden">Pilih Bahasa</label>
+            <select name="language" id="lang" aria-label="Pilih Bahasa">
+              <option value="en">En</option>
+              <option value="id">Id</option>
+            </select>
+          </div>
 
           <button
             class="theme-btn"
-            aria-label="Change Theme"
+            aria-label="Toggle Dark/Light Theme"
             title="Change Theme"
             data-theme-btn
           >
@@ -139,22 +278,29 @@
               <source
                 srcset="./assets/images/hero-gif.webp"
                 media="(min-width: 768px)"
+                width="800"
+                height="600"
               />
               <source
-                srcset="./assets/images/hero-gif-md.webp"
+                srcset="./assets/images/hero-gif.webp"
                 media="(min-width: 500px)"
+                width="600"
+                height="450"
               />
               <img
-                src="./assets/images/hero-gif-sm.webp"
-                alt="Hero GIF"
+                src="./assets/images/hero-gif.webp"
+                alt="Animated birds flying across the screen - Hero image"
                 class="w-100"
+                width="400"
+                height="300"
+                fetchpriority="high"
+                loading="eager"
               />
             </picture>
           </figure>
 
           <div class="hero-content">
             <h2 class="h2 hero-title">Website Portfolio Luthfi</h2>
-
             <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
           </div>
 
@@ -163,10 +309,10 @@
               <a
                 href="https://github.com/luthfidi"
                 target="_blank"
+                rel="noopener"
                 class="hero-social-link"
               >
-                <ion-icon name="logo-Github"></ion-icon>
-
+                <ion-icon name="logo-Github" aria-hidden="true"></ion-icon>
                 <div class="tooltip">GitHub</div>
               </a>
             </li>
@@ -175,10 +321,10 @@
               <a
                 href="https://www.instagram.com/luthfidi_"
                 target="_blank"
+                rel="noopener"
                 class="hero-social-link"
               >
-                <ion-icon name="logo-Instagram"></ion-icon>
-
+                <ion-icon name="logo-Instagram" aria-hidden="true"></ion-icon>
                 <div class="tooltip">Instagram</div>
               </a>
             </li>
@@ -187,10 +333,10 @@
               <a
                 href="https://www.linkedin.com/in/luthfi-hadi"
                 target="_blank"
+                rel="noopener"
                 class="hero-social-link"
               >
-                <ion-icon name="logo-linkedin"></ion-icon>
-
+                <ion-icon name="logo-linkedin" aria-hidden="true"></ion-icon>
                 <div class="tooltip">Linkedin</div>
               </a>
             </li>
@@ -207,7 +353,7 @@
           <ul class="stats-list">
             <li>
               <a
-                href="https://www.linkedin.com/in/luthfi-hadi/details/experience/?locale=in_ID"
+                href="https://www.linkedin.com/in/luthfi-hadi/details/experience/"
                 target="_blank"
                 class="stats-card"
               >
@@ -222,7 +368,10 @@
                   5+ <strong>Tahun Pengalaman Organisasi</strong>
                 </h2>
 
-                <ion-icon name="chevron-forward-outline"></ion-icon>
+                <ion-icon
+                  name="chevron-forward-outline"
+                  aria-hidden="true"
+                ></ion-icon>
               </a>
             </li>
 
@@ -277,8 +426,8 @@
         <section class="about" id="about">
           <figure class="about-banner">
             <img
-              src="./assets/images/about-banner.png"
-              alt="A man in a alice blue shirt with a thinking expression"
+              src="./assets/images/about-banner.webp"
+              alt="Luthfi Hadi"
               class="w-100"
             />
           </figure>
@@ -638,12 +787,14 @@
               <a
                 href="https://luthfidi.github.io/Wheater-App-Website-Using-API"
                 target="_blank"
+                rel="noopener"
                 class="project-card"
               >
                 <figure class="card-banner">
                   <img
                     src="./assets/images/project-1.png"
                     class="w-100"
+                    loading="lazy"
                     alt="Website perkiraan cuaca menggunakan API, menampilkan antarmuka pengguna yang bersih dan fungsional."
                   />
                 </figure>
@@ -660,12 +811,14 @@
               <a
                 href="https://luthfidi.github.io/Revamping-Indonesian-Government-Website/public"
                 target="_blank"
+                rel="noopener"
                 class="project-card"
               >
                 <figure class="card-banner">
                   <img
                     src="./assets/images/project-2.png"
                     class="w-100"
+                    loading="lazy"
                     alt="Revamp situs pemerintahan Indonesia dengan peningkatan pengalaman pengguna dan desain."
                   />
                 </figure>
@@ -682,12 +835,14 @@
               <a
                 href="https://www.figma.com/design/dbB4q2CcLbAXDIujQZWGfS/LnTMidProject_UI%2FUX-B_Luthfi-Hadi?node-id=0-1&t=zvMRWQ6VfzkyECM2-1"
                 target="_blank"
+                rel="noopener"
                 class="project-card"
               >
                 <figure class="card-banner">
                   <img
                     src="./assets/images/project-3.png"
                     class="w-100"
+                    loading="lazy"
                     alt="Desain UI/UX untuk website Benang.com, berfokus pada prinsip antarmuka dan pengalaman pengguna modern."
                   />
                 </figure>
@@ -704,12 +859,14 @@
               <a
                 href="https://www.figma.com/design/vsV0CvI4Ofja46NNS08lNb/LnTFinalProject_UI%2FUX-B_Luthfi-Hadi?node-id=0-1&t=9p47fl8WBav2u2K9-1"
                 target="_blank"
+                rel="noopener"
                 class="project-card"
               >
                 <figure class="card-banner">
                   <img
                     src="./assets/images/project-4.png"
                     class="w-100"
+                    loading="lazy"
                     alt="Desain UI/UX untuk aplikasi mobile Furnish.id, menggabungkan alur pengguna yang intuitif dan visual yang menarik."
                   />
                 </figure>
@@ -726,19 +883,19 @@
               <a
                 href="https://github.com/luthfidi/PSD_Project-GymMe"
                 target="_blank"
+                rel="noopener"
                 class="project-card"
               >
                 <figure class="card-banner">
                   <img
                     src="./assets/images/project-5.png"
-                    class="w-100"
                     alt="Website untuk GymMe, sebuah aplikasi kebugaran yang menampilkan desain responsif dan navigasi pengguna yang lancar."
+                    class="w-100"
+                    loading="lazy"
                   />
                 </figure>
-
                 <div class="card-content">
                   <h3 class="h4 card-title">GymMe-Website</h3>
-
                   <div class="tech-stack">ASP.NET, C#, Tailwind CSS</div>
                 </div>
               </a>
@@ -748,12 +905,14 @@
               <a
                 href="https://github.com/luthfidi/WebProg-LD01"
                 target="_blank"
+                rel="noopener"
                 class="project-card"
               >
                 <figure class="card-banner">
                   <img
                     src="./assets/images/project-6.png"
                     class="w-100"
+                    loading="lazy"
                     alt="Proyek pengembangan web menggunakan Laravel, dengan struktur yang terorganisir dan praktik penulisan kode yang rapi."
                   />
                 </figure>
@@ -770,19 +929,19 @@
               <a
                 href="https://docs.google.com/spreadsheets/d/1ltE1Otu6CbqB-zVjtZGjYDdFl3_ha1oZMrQlOgsDqDA/edit?usp=sharing"
                 target="_blank"
+                rel="noopener"
                 class="project-card"
               >
                 <figure class="card-banner">
                   <img
                     src="./assets/images/project-7.png"
                     class="w-100"
+                    loading="lazy"
                     alt="Artikel yang dipublikasikan dan dioptimalkan dengan standar SEO, menunjukkan pemahaman mendalam tentang optimasi mesin pencari."
                   />
                 </figure>
-
                 <div class="card-content">
                   <h3 class="h4 card-title">My-SEO-Articles</h3>
-
                   <div class="tech-stack">WordPress</div>
                 </div>
               </a>
@@ -792,19 +951,19 @@
               <a
                 href="https://github.com/luthfidi/HCI-Project"
                 target="_blank"
+                rel="noopener"
                 class="project-card"
               >
                 <figure class="card-banner">
                   <img
                     src="./assets/images/project-8.png"
                     class="w-100"
+                    loading="lazy"
                     alt="Project Akhir Mata Kuliah Human Computer Interaction"
                   />
                 </figure>
-
                 <div class="card-content">
                   <h3 class="h4 card-title">HI-Toyz-Website</h3>
-
                   <div class="tech-stack">HTML, CSS, JavaScript</div>
                 </div>
               </a>
@@ -814,19 +973,19 @@
               <a
                 href="https://github.com/luthfidi/Luthfi-Portfolio-Website"
                 target="_blank"
+                rel="noopener"
                 class="project-card"
               >
                 <figure class="card-banner">
                   <img
                     src="./assets/images/project-9.png"
                     class="w-100"
+                    loading="lazy"
                     alt="Website Portfolio Luthfi"
                   />
                 </figure>
-
                 <div class="card-content">
-                  <h3 class="h4 card-title">Luthfi-Portfolio-Web</h3>
-
+                  <h3 class="h4 card-title">Luthfi-Portfolio-Website</h3>
                   <div class="tech-stack">HTML, CSS, JavaScript</div>
                 </div>
               </a>
@@ -836,12 +995,14 @@
               <a
                 href="https://luthfidi.github.io/Music-Player-Website"
                 target="_blank"
+                rel="noopener"
                 class="project-card"
               >
                 <figure class="card-banner">
                   <img
                     src="./assets/images/project-10.png"
                     class="w-100"
+                    loading="lazy"
                     alt="Website Pemutar Lagu"
                   />
                 </figure>
@@ -855,10 +1016,24 @@
             </li>
 
             <li class="see-more-container">
-              <a href="https://github.com/luthfidi" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/luthfidi"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <button class="load-more">
                   <span>Lihat Proyek lainnya</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
@@ -1006,7 +1181,6 @@
           <form action="" class="contact-form">
             <div class="form-wrapper">
               <label for="name" class="form-label">Nama</label>
-
               <div class="input-wrapper">
                 <input
                   type="text"
@@ -1016,8 +1190,7 @@
                   placeholder="contoh: John Doe"
                   class="input-field"
                 />
-
-                <ion-icon name="person-circle"></ion-icon>
+                <ion-icon name="person-circle" aria-hidden="true"></ion-icon>
               </div>
             </div>
 
@@ -1034,7 +1207,7 @@
                   class="input-field"
                 />
 
-                <ion-icon name="mail"></ion-icon>
+                <ion-icon name="mail" aria-hidden="true"></ion-icon>
               </div>
             </div>
 
@@ -1051,7 +1224,7 @@
                   class="input-field"
                 />
 
-                <ion-icon name="call"></ion-icon>
+                <ion-icon name="call" aria-hidden="true"></ion-icon>
               </div>
             </div>
 
@@ -1089,8 +1262,9 @@
 
         <p class="copyright">
           &copy; 2024
-          <a href="https://github.com/luthfidi" target="_blank">luthfidi</a>.
-          All rights reserved
+          <a href="https://github.com/luthfidi" target="_blank" rel="noopener"
+            >luthfidi</a
+          >. All rights reserved
         </p>
       </div>
     </footer>

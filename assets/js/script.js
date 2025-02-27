@@ -287,87 +287,169 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// cursor
 console.clear();
 
-const curlen = 20;
-
-const cursor = document.getElementById("cursor");
-
-let mouseX = 0;
-let mouseY = 0;
-
-let circles;
-let history = Array(curlen).fill({ x: 0, y: 0 });
-
-function onMouseMove(event) {
-  mouseX = event.clientX;
-  mouseY = event.clientY;
+// Function to detect mobile or touch devices
+function isTouchDevice() {
+  return 'ontouchstart' in window || 
+         navigator.maxTouchPoints > 0 || 
+         navigator.msMaxTouchPoints > 0;
 }
 
-function initCursor() {
-  for (let i = 0; i < curlen; i++) {
-    let div = document.createElement("div");
-    div.classList.add("cursor-circle");
-    cursor.append(div);
+// Only initialize cursor on non-touch devices to improve performance on mobile
+if (!isTouchDevice()) {
+  // Simplified cursor with fewer elements for better performance
+  const curlen = 10; // Reduced from 20 to 10 for better performance
+  const cursor = document.getElementById("cursor");
+  
+  if (cursor) {
+    let mouseX = 0;
+    let mouseY = 0;
+    let circles = [];
+    let history = Array(curlen).fill({ x: 0, y: 0 });
+    let animationFrame = null;
+    let isVisible = false;
+    
+    // Function to handle mouse movement
+    function onMouseMove(event) {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+      
+      // Show cursor on first mouse movement
+      if (!isVisible) {
+        cursor.style.opacity = 1;
+        isVisible = true;
+      }
+    }
+    
+    // Initialize cursor elements
+    function initCursor() {
+      // Create a document fragment for better performance
+      const fragment = document.createDocumentFragment();
+      
+      for (let i = 0; i < curlen; i++) {
+        let div = document.createElement("div");
+        div.classList.add("cursor-circle");
+        fragment.appendChild(div);
+      }
+      
+      cursor.appendChild(fragment);
+      circles = Array.from(document.querySelectorAll(".cursor-circle"));
+      
+      // Initially hide cursor
+      cursor.style.opacity = 0;
+    }
+    
+    // Optimized update function using transform property for better performance
+    function updateCursor() {
+      // Shift history array
+      history.shift();
+      history.push({ x: mouseX, y: mouseY });
+      
+      // Update circle positions
+      for (let i = 0; i < curlen; i++) {
+        let current = history[i];
+        let next = history[i + 1] || history[curlen - 1];
+        
+        let diffx = next.x - current.x;
+        let diffy = next.y - current.y;
+        
+        current.x += diffx * 0.35;
+        current.y += diffy * 0.35;
+        
+        // Use transform for better performance (GPU accelerated)
+        const scale = i / curlen;
+        circles[i].style.transform = `translate(${current.x}px, ${current.y}px) scale(${scale})`;
+      }
+      
+      // Request next animation frame
+      animationFrame = requestAnimationFrame(updateCursor);
+    }
+    
+    // Add event listener for mouse movement
+    document.addEventListener("mousemove", onMouseMove, { passive: true });
+    
+    // Handle page visibility to conserve resources
+    document.addEventListener("visibilitychange", function() {
+      if (document.hidden) {
+        // Stop animation when page is not visible
+        if (animationFrame) {
+          cancelAnimationFrame(animationFrame);
+          animationFrame = null;
+        }
+      } else {
+        // Resume animation when page becomes visible
+        if (!animationFrame) {
+          animationFrame = requestAnimationFrame(updateCursor);
+        }
+      }
+    });
+    
+    // Initialize the cursor
+    initCursor();
+    
+    // Start animation
+    animationFrame = requestAnimationFrame(updateCursor);
   }
-  circles = Array.from(document.querySelectorAll(".cursor-circle"));
 }
 
-function updateCursor() {
-  history.shift();
-  history.push({ x: mouseX, y: mouseY });
-
-  for (let i = 0; i < curlen; i++) {
-    let current = history[i];
-    let next = history[i + 1] || history[curlen - 1];
-
-    let diffx = next.x - current.x;
-    let diffy = next.y - current.y;
-
-    current.x += diffx * 0.35;
-    current.y += diffy * 0.35;
-    circles[i].style.transform = `translate(${current.x}px, ${
-      current.y
-    }px) scale(${i / curlen})`;
-  }
-  requestAnimationFrame(updateCursor);
-}
-
-document.addEventListener("mousemove", onMouseMove, false);
-
-initCursor();
-updateCursor();
-
-//scrollbar
+// Optimized scrollbar implementation
 function initCustomScrollbar() {
-  const scrollbar = document.createElement("div");
-  scrollbar.className = "custom-scrollbar";
-
-  const thumb = document.createElement("div");
-  thumb.className = "custom-scrollbar-thumb";
-
-  scrollbar.appendChild(thumb);
-  document.body.appendChild(scrollbar);
-
-  // Update thumb height and position
-  function updateScrollbar() {
-    const scrollPercent =
-      window.scrollY /
-      (document.documentElement.scrollHeight - window.innerHeight);
-    const thumbHeight =
-      (window.innerHeight / document.documentElement.scrollHeight) *
-      window.innerHeight;
-
-    thumb.style.height = `${thumbHeight}px`;
-    thumb.style.top = `${scrollPercent * (window.innerHeight - thumbHeight)}px`;
+  // Only create custom scrollbar on desktop devices
+  if (!isTouchDevice()) {
+    const scrollbar = document.createElement("div");
+    scrollbar.className = "custom-scrollbar";
+    
+    const thumb = document.createElement("div");
+    thumb.className = "custom-scrollbar-thumb";
+    
+    scrollbar.appendChild(thumb);
+    document.body.appendChild(scrollbar);
+    
+    // Throttle scroll events for better performance
+    let lastKnownScrollPosition = 0;
+    let ticking = false;
+    
+    // Function to update scrollbar position and size
+    function updateScrollbar() {
+      const scrollPercent = window.scrollY / 
+        (document.documentElement.scrollHeight - window.innerHeight);
+      const thumbHeight = (window.innerHeight / document.documentElement.scrollHeight) * 
+        window.innerHeight;
+      
+      thumb.style.height = `${thumbHeight}px`;
+      thumb.style.top = `${scrollPercent * (window.innerHeight - thumbHeight)}px`;
+      
+      ticking = false;
+    }
+    
+    // Add event listener with throttling
+    window.addEventListener("scroll", function() {
+      lastKnownScrollPosition = window.scrollY;
+      
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          updateScrollbar();
+          ticking = false;
+        });
+        
+        ticking = true;
+      }
+    });
+    
+    // Update on resize with debounce
+    let resizeTimer;
+    window.addEventListener("resize", function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateScrollbar, 100);
+    });
+    
+    // Initial update
+    updateScrollbar();
   }
-
-  window.addEventListener("scroll", updateScrollbar);
-  window.addEventListener("resize", updateScrollbar);
-  updateScrollbar();
 }
 
+// Initialize the custom scrollbar
 initCustomScrollbar();
 
 document.addEventListener('DOMContentLoaded', function() {
